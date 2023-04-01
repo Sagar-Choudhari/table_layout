@@ -1,0 +1,80 @@
+ShowCaseWidget(
+        builder: Builder(builder: (context) => const ShowcaseDemo()),
+      ),
+
+
+
+Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Different Notifications here',
+            ),
+            Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      colors: [Color(0xfffbb040), Color(0xffef4136)],
+                      begin: FractionalOffset.centerLeft,
+                      end: FractionalOffset.centerRight,
+                      stops: [0.0, 1.0],
+                      tileMode: TileMode.clamp),
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+                onPressed: () {
+                  toast.Fluttertoast.showToast(
+                      msg: "This is Center Short Toast",
+                      toastLength: toast.Toast.LENGTH_SHORT,
+                      gravity: toast.ToastGravity.SNACKBAR,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.grey,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                },
+                child: const Text('Call Toast')),
+            const SizedBox(height: 10),
+            ElevatedButton(
+                onPressed: () {
+                  var snackBar =
+                      const SnackBar(content: Text('Hello, I am here'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                child: const Text('Call SnackBar')),
+            Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      colors: [
+                        Color(0xff2d388a),
+                        Color(0xff00aeef),
+                      ],
+                      begin: FractionalOffset.bottomLeft,
+                      end: FractionalOffset.topRight,
+                      stops: [0.0, 1.0],
+                      tileMode: TileMode.mirror),
+                  borderRadius: BorderRadius.circular(40)),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Table()),
+                  );
+                },
+                child: const Text('Call Table')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Intro()),
+                  );
+                },
+                child: const Text('Call Intro Screen')),
+          ],
+        ),
+      ),
